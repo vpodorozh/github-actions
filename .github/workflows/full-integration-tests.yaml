@@ -59,7 +59,7 @@ jobs:
           # old output: echo "testsuite_dirs=$(jq -c .testsuites integration-testsuites.json)" >> "$GITHUB_OUTPUT"
           
           if [ -n "${{ github.event.inputs.test_directory }}" ]; then
-              echo "testsuite_dirs=[ ${{ github.event.inputs.test_directory }} ]" >> "$GITHUB_OUTPUT"
+              echo "testsuite_dirs=['${{ github.event.inputs.test_directory }}']" >> "$GITHUB_OUTPUT"
               exit 0
           fi
           
