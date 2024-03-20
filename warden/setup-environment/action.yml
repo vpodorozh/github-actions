@@ -203,8 +203,13 @@ runs:
           export WARDEN="$(dirname $(pwd))/warden/bin/warden"
           ${WARDEN} svc up 
           ${WARDEN} env up
-          echo "TESTING WARDEN DB VERSION"
-          ${WARDEN} env exec -T db mysql --version
+
+    - name: WARDEN TEST DB VERSION
+      working-directory: ${{ inputs.base_directory }}
+      shell: bash
+      run: |
+        export WARDEN="$(dirname $(pwd))/warden/bin/warden"
+        ${WARDEN} env exec -T php-fpm bin/magento setup:db:status
 
     - name: Change Directory Permissions
       working-directory: ${{ inputs.base_directory }}
