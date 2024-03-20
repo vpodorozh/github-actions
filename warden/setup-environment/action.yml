@@ -209,7 +209,7 @@ runs:
       shell: bash
       run: |
         export WARDEN="$(dirname $(pwd))/warden/bin/warden"
-        ${WARDEN} env exec -T php-fpm bin/magento setup:db:status
+        ${WARDEN} env exec -T db mysql --version
 
     - name: Change Directory Permissions
       working-directory: ${{ inputs.base_directory }}
