@@ -203,6 +203,8 @@ runs:
           export WARDEN="$(dirname $(pwd))/warden/bin/warden"
           ${WARDEN} svc up 
           ${WARDEN} env up
+          echo "TESTING WARDEN DB VERSION"
+          ${WARDEN} env exec -T db mysql --version
 
     - name: Change Directory Permissions
       working-directory: ${{ inputs.base_directory }}
